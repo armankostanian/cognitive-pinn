@@ -1,0 +1,22 @@
+# Core ML stack
+torch>=2.0
+torchdiffeq>=0.2.5
+
+# Numerical
+numpy>=1.24
+scipy>=1.11
+
+# ML utilities
+scikit-learn>=1.3
+pandas>=2.0
+
+# Visualisation
+matplotlib>=3.7
+seaborn>=0.13
+
+# Notebook
+jupyter>=1.0
+ipython>=8.0
+
+# Optional but recommended for the full Colab pipeline
+nbformat>=5.9
