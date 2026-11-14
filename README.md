@@ -17,7 +17,7 @@ Registered software: Rospatent certificate No. 2026684922, «Программа 
 "semi-implicit" integrator `k_{n+1} = (k_n + h a) / (1 + h Λ)`. That scheme omits the saturation
 factor and does not keep the state in the unit box. It is replaced by the implicit Euler step
 `k_{n+1} = (k_n + h a) / (1 + h (a + Λ))`, which preserves `[0,1]^K` for any step size; see
-`scheme_comparison.py` and arXiv v2.
+`scheme_comparison.py` and arXiv v2 and later.
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/pytorch-2.0+-EE4C2C.svg)](https://pytorch.org/)
