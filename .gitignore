@@ -5,3 +5,7 @@ artifacts/
 *.zip
 .venv/
 .ipynb_checkpoints/
+*.csv.gz
+preds_*.csv
+data/
+clean/

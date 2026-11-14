@@ -42,8 +42,8 @@ def step_rk4(k, a_vec, h):
 
 
 def step_semi_implicit(k, a_vec, h):
-    """Схема (14): диссипация неявно, усвоение явно. Обращаемая матрица диагональна."""
-    return (k + h * a_vec) / (1.0 + h * LAM)
+    """Неявный метод Эйлера: (k + h a) / (1 + h (a + Lambda)), сохраняет [0,1] при любом шаге."""
+    return (k + h * a_vec) / (1.0 + h * (a_vec + LAM))
 
 
 def integrate(step_fn, k, a_vec, T, h):

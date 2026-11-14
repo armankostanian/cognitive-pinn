@@ -20,3 +20,6 @@ ipython>=8.0
 
 # Optional but recommended for the full Colab pipeline
 nbformat>=5.9
+
+# Tests
+pytest>=7.0
