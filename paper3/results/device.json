@@ -1,0 +1,35 @@
+{
+  "config": {
+    "threads": 1,
+    "cpu": "Intel Core i5-12400F (single thread)",
+    "torch": "2.11.0+cu128",
+    "history_len": 200,
+    "K": 39,
+    "student_id": 2,
+    "dtype": "float32",
+    "alpha": 1.0
+  },
+  "a_single_exact_step": {
+    "median_s": 4.169996827840805e-05,
+    "min_s": 3.469991497695446e-05,
+    "p95_s": 4.940014332532883e-05,
+    "reps": 10000,
+    "check_step_vs_trajectory_maxabs": 1.1920928955078125e-07
+  },
+  "b_finetune_iteration": {
+    "scan": {
+      "median_s": 0.0018562000477686524,
+      "min_s": 0.0016957998741418123,
+      "p95_s": 0.0025780001771636306,
+      "reps": 1000,
+      "loss_after_run": 0.5670604109764099
+    },
+    "sequential_autograd": {
+      "median_s": 0.006932649994269013,
+      "min_s": 0.00634300010278821,
+      "p95_s": 0.007781130098737776,
+      "reps": 1000,
+      "loss_after_run": 0.5670604109764099
+    }
+  }
+}
