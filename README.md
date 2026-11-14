@@ -2,13 +2,30 @@
 
 **Identifiability of a dissipative knowledge-dynamics model**
 
+## Papers and where their code lives
+
+| # | Paper | Status | Code |
+|---|---|---|---|
+| 1 | A. Kostanian, A. Beklaryan. *Identifiability of a dissipative knowledge-dynamics model: exact recovery under designed excitation, degeneration on observational data.* [arXiv:2610.09889](https://arxiv.org/abs/2610.09889) | under review, «Компьютерные исследования и моделирование» | `src/`, `scheme_comparison.py`, `paper1_controls/`, `RESULTS.md` |
+| 2 | A. Kostanian, A. Beklaryan. *Exact discretisation and a criterion for parameter identifiability in input-driven dissipative models of learning.* | under review, Journal of Mathematical Psychology | `paper2/` |
+| 3 | A. A. Kostanian, A. L. Beklaryan. *Parallel exact trajectory evaluation and parameter estimation for dissipative learning models on graphics processors* (in Russian). | under review, «Вестник ЮУрГУ. Серия: Вычислительная математика и информатика» | `paper3/` |
+
+Registered software: Rospatent certificate No. 2026684922, «Программа физико-информированного
+моделирования динамики знаний обучающегося "Cognitive-PINN"».
+
+**Correction (October 2026).** Earlier versions of this repository and of the preprint described a
+"semi-implicit" integrator `k_{n+1} = (k_n + h a) / (1 + h Λ)`. That scheme omits the saturation
+factor and does not keep the state in the unit box. It is replaced by the implicit Euler step
+`k_{n+1} = (k_n + h a) / (1 + h (a + Λ))`, which preserves `[0,1]^K` for any step size; see
+`scheme_comparison.py` and arXiv v2.
+
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/pytorch-2.0+-EE4C2C.svg)](https://pytorch.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Reference implementation accompanying the paper *Identifiability of a dissipative
 knowledge-dynamics model: exact recovery under designed excitation, degeneration on observational
-data* (in preparation, 2026).
+data* (arXiv:2610.09889; under review).
 
 ---
 
@@ -22,8 +39,7 @@ practice-response gain — and we study **when those parameters can actually be 
 data**.
 
 We prove a structural identifiability theorem under explicit excitation conditions, with
-constructive closed-form recovery for the two-concept case, and develop an L-stable semi-implicit
-integrator plus a batched solver that is numerically equivalent to the per-trajectory formulation
+constructive closed-form recovery for the two-concept case, and develop an implicit Euler integrator that preserves the unit box for any step size plus a batched solver that is numerically equivalent to the per-trajectory formulation
 while being two orders of magnitude faster.
 
 The empirical picture is two-sided. Under the excitation conditions, recovery is exact. On large
@@ -41,7 +57,7 @@ controls and traced to the stationary structure of the model.
 | Batched solver: bit-exact vs per-student path, ~245x speedup | `src/cpinn_batched_test.py` | Reproducible |
 | Clean matched AUC vs DKT/BKT (CPINN is **lower**) | `RESULTS.md` §2 | Done |
 | Observational data: recovery degenerates (4 controls) | `RESULTS.md` §3 | Done |
-| On-device adjoint fine-tuning with measured latency | — | In preparation |
+| On-device step and fine-tuning latency | `paper3/results/device.json` | Done |
 
 **Read [`RESULTS.md`](RESULTS.md) before using any number from this repository.** It lists the
 verified results *and* the refuted claims that earlier versions of this repository contained.
@@ -119,8 +135,11 @@ cognitive-pinn/
 |- README.md                       - this file
 |- RESULTS.md                      - verified results + refuted claims
 |- HOW_TO_RUN.md                   - run guide
-|- HOW_TO_GITHUB.md                - git/github notes
 |- LICENSE, requirements.txt
+|- scheme_comparison.py            - explicit RK4 vs implicit Euler
+|- paper1_controls/                - additional control experiments of paper 1
+|- paper2/                         - code and results of paper 2
+|- paper3/                         - code, tests and measurements of paper 3
 |
 |- src/
 |  |- cpinn_model.py               - model (ODE, emission, loss)
@@ -159,7 +178,8 @@ folds shared across models and DeLong significance testing.
              observational data},
   author  = {Kostanian, Arman and Beklaryan, Armen},
   year    = {2026},
-  note    = {in preparation}
+  eprint  = {2610.09889},
+  archivePrefix = {arXiv}
 }
 ```
 

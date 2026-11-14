@@ -1,0 +1,32 @@
+{
+ "cond": "hier_tau02_i5",
+ "rep": 43,
+ "Lam": [
+  Infinity,
+  NaN
+ ],
+ "alpha": [
+  NaN,
+  NaN
+ ],
+ "A": [
+  [
+   1.9385226171001757e+184,
+   0.0
+  ],
+  [
+   NaN,
+   NaN
+  ]
+ ],
+ "beta": [
+  5.0,
+  4.0
+ ],
+ "tau": [
+  Infinity,
+  0.0
+ ],
+ "eta_rmse": NaN,
+ "refit": true
+}
